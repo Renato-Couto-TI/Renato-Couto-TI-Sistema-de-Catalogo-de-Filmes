@@ -26,7 +26,7 @@ No sistema é possível visualizar o **catálogo de filmes** (lista de registros
 - **Ir para a Home**.
 - **Fazer logout** etc.
 
-## Banco de Dados
+## Forma de Inserção dos Registros no Banco de Dados
 
 - Os **10 primeiros registros de filmes** foram inseridos no Banco de Dados diretamente por meio de **Seeder**, com o armazenamento das imagens em _`public\assets\images\filmes`_.
 - Os **demais registros de filmes** foram sendo inseridos com o **sistema em execução real** (botão **_'CADASTRAR NOVO FILME'_**), ao longo do desenvolvimento do código e como testes. Estes foram armazenados em _`public\assets\images\filmesUpload`_.
