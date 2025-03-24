@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('filmes', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->integer('user_id')->nullable();
+            $table->id()->autoIncrement();        
             $table->string('nome_filme', 200)->nullable();
             $table->string('ano_lançamento', 4)->nullable();
             $table->string('categoria', 30)->nullable();

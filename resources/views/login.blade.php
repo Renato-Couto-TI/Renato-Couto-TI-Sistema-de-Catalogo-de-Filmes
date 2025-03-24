@@ -1,4 +1,5 @@
 @extends('layouts.main_layout')
+
 @section('content')
     <div class="login-container">
         <div class="login-card">
@@ -9,34 +10,31 @@
 
             <form action="{{ url('/loginSubmit') }}" method="POST" novalidate>
                 @csrf
-                <div class="input-group">
+                <div class="campos-input">
                     <label for="text_username">Nome de Usuário</label>
                     <input type="email" name="text_username" id="text_username" required value="{{ old('text_username') }}">
                     @error('text_username')
-                        <div class="text-danger">{{ $message }}</div>
+                        <div class="aviso-erro">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="input-group">
+                <div class="campos-input">
                     <label for="text_password">Senha</label>
                     <input type="password" name="text_password" id="text_password" required>
                     @error('text_password')
-                        <div class="text-danger">{{ $message }}</div>
+                        <div class="aviso-erro">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="submit-group">
+                <div class="botao-submit">
                     <button type="submit">LOGIN</button>
                 </div>
             </form>
 
             @if(session('loginError'))
-            <div class="alert-warning text-center">
+                <div class="alert-warning text-center">
                     {{ session('loginError') }}        
                 </div>
             @endif
-            
-            <div class="footer">
-                <small>&copy; <?= date('Y') ?> Catalogo de Filmes</small>
-            </div>
+                        
         </div>
     </div>
 @endsection

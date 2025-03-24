@@ -15,7 +15,7 @@ class AuthController extends Controller
 
     public function loginSubmit(Request $request){   
         
-        //Validação do Formulario. Exige que os campos sejam preenchidos
+        //Validação do Formulario. Aqui exijo que os campos sejam preenchidos, com mensagens de erro caso não seja atendido
         $request->validate(
             //regras
             [
@@ -36,23 +36,23 @@ class AuthController extends Controller
         $usuario = $request->input('text_username');
         $senhaUsuario = $request->input('text_password');
         
-        //verificando se o usuário existe no Banco de Dados
+        //Aqui faço a validação/verificação se o usuário existe no Banco de Dados (coluna 'nome_usuario' da tabela 'users')
         $user = User::where('nome_usuario', $usuario)->where('deleted_at',NULL)->first();
         
         if(!$user){
             return redirect()->back()->withInput()->with('loginError', 'Nome de Usuário ou Senha incorretos.');
         }
 
-        //verificando se a Senha está correta de acordo com o Banco de Dados
+        //Aqui faço a validação/verificação se a Senha está correta de acordo com o registro no Banco de Dados (coluna 'senha' da tabela 'users')
         if(!password_verify($senhaUsuario, $user->senha)){
             return redirect()->back()->withInput()->with('loginError', 'Nome de Usuário ou Senha incorretos.');
         }
 
-        //atualiza o atributo ultimo_login da tabela users
+        //Aqui atualizo a coluna ultimo_login da tabela users. Considerei relevante para registro dos dados de login
         $user->ultimo_login = date('Y-m-d H:i:s');
         $user->save();
 
-        //colocar os dados do usuário logado na sessão 
+        //Aqui coloco na sessão os dados do usuário logado  
         session([
             'user' => [
                 'id' => $user->id,
@@ -60,10 +60,10 @@ class AuthController extends Controller
             ]
         ]);
 
-        //redireciona para a home
+        //Login bem sucedido: redireciono para a home
         return redirect()->to('/');
                        
-        //teste de conexão com o Banco de Dados
+        //Aqui fiz os testes de conexão com o Banco de Dados
         //try{
         //    DB::connection()->getPdo();
         //    echo 'Conexão Bem Sucedida!';
@@ -72,6 +72,7 @@ class AuthController extends Controller
         //}
     }
 
+    //Função de logout que redireciona de volta para a tela de login
     public function logout(){
         //fazendo logout
         session()->forget('user');

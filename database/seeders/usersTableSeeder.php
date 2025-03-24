@@ -12,7 +12,7 @@ class usersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //criando 3 usuários hipotéticos para o Banco de Dados
+        //criando 3 usuários iniciais para o meu Banco de Dados
         DB::table('users')->insert([
             [
                 'nome_usuario'=> 'usuario1@teste.com',

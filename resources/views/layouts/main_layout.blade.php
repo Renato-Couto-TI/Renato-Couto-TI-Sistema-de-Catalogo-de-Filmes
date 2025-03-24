@@ -9,7 +9,15 @@
 </head>
 <body>
 
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
+
+    <footer class="footer">
+        <div class="conteudo-footer">
+            <small>&copy; <?= date('Y') ?> Renato Couto - Catalogo de Filmes</small>
+        </div>    
+    </footer>
 
 </body>
 </html>

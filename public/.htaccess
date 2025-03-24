@@ -22,4 +22,11 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Permitir acesso à pasta storage
+    <Directory "C:/Users/Renato/Desktop/Curso Laravel/catalogoFilmes/storage">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
 </IfModule>
