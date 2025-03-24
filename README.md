@@ -1,66 +1,34 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Catálogo de Filmes
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Desenvolvi um **Sistema com Registro de Catálogo de Filmes**, utilizando a linguagem **PHP** e o framework **Laravel**.
 
-## About Laravel
+## Login e Logout
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Implementei login e logout no sistema, para que seja um serviço exclusivo para usuários autenticados.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Usuários criados**: Criei 3 usuários diferentes para testes (todos com a mesma **senha: `123456`**):
+  - `usuario1@teste.com`
+  - `usuario2@teste.com`
+  - `usuario3@teste.com`
+    
+**Validação de Dados**: Implementei o controle de verificação e validação do nome de usuário/senha junto ao Banco de Dados, além de regras para nome de usuário/senha, com avisos na tela (por exemplo: _'o nome de usuário deve ser um email'_, _'a Senha deve ter pelo menos 6 caracteres'_, _'a Senha deve ter máximo 16 caracteres'_ etc).
+  
+**Criptografia de Senha**: Usei o **bcrypt** para criptografar as senhas no Banco de Dados com hash criptográfico.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Funcionalidades do Sistema
 
-## Learning Laravel
+No sistema é possível visualizar o **catálogo de filmes** (lista de registros), sendo possível navegar pelo catálogo com o uso de **elementos de paginação** e, ainda, realizar as seguintes ações:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Adicionar novos registros de filmes**, em *'Cadastrar Novo Filme'*, com a possibilidade de inserir imagens.
+- **Editar os registros de filmes** já existentes, com a possibilidade de inserir nova imagem ou modificar a imagem atual do filme.
+- **Excluir registros antigos de filmes**.
+- **Fazer buscas de registros de filmes** com o uso de **filtros** (nome, categoria, ano de lançamento).
+- **Ir para a Home**.
+- **Fazer logout** etc.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Banco de Dados
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Os **10 primeiros registros de filmes** foram inseridos no Banco de Dados diretamente por meio de **Seeder**, com o armazenamento das imagens em _`public\assets\images\filmes`_.
+- Os **demais registros de filmes** foram sendo inseridos com o **sistema em execução real** (botão **_'CADASTRAR NOVO FILME'_**), ao longo do desenvolvimento do código e como testes. Estes foram armazenados em _`public\assets\images\filmesUpload`_.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
